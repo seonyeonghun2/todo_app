@@ -16,3 +16,7 @@
 ## 진행상황
 - 인-메모리 형태로 Todo App 구현 완료
 - Cloud DB 적용해보기
+
+## 브랜치
+- main : 최종 outout
+- feature : 로컬 API를 Cloud DB API로 변경하는 진행중인 output | 최종적으로 main에 병합예정
