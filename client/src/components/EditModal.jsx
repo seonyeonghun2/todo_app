@@ -6,7 +6,11 @@ function EditModal({ handleEditSave, isOpen, onClose, initText, editId }) {
   const handleEditInputChange = (e) => {
     setNewText(e.target.value);
   };
-  
+  useEffect(() => {
+    if (isOpen) {
+      newTextRef.current.focus();
+    }
+  }, [isOpen]);
   const handleSave = () => {
     handleEditSave(editId, newText);
     onClose();
