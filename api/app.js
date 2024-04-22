@@ -38,7 +38,6 @@ app.get('/todos', (req, res) => {
 app.get('/todos/:id', (req, res) => {
   console.log(req.params);
   const { id } = req.params;
-  console.log('아이디 : ' + id);
   const todo = todos.find((todo) => todo.id === parseInt(id));
   if (!todo) {
     return res.status(404).send('해당 ID에 대한 할일이 존재하지 않습니다.');
@@ -50,12 +49,14 @@ app.get('/todos/:id', (req, res) => {
 // Update - 특정 할일의 내용을 수정하기
 app.put('/todos/:id', (req, res) => {
   const { id } = req.params;
-  const updateText = req.body.text;
+  const { text } = req.body;
+  console.log(`아이디/텍스트 : ${id}, ${text}`);
   const index = todos.findIndex((todo) => todo.id === parseInt(id));
+  console.log('index : ' + index);
   if (index === -1) {
     return res.status(404).send('해당 ID에 대한 할일이 존재하지 않습니다.');
   }
-  todos[index].text = updateText;
+  todos[index].text = text;
   res.status(201).send('할일이 업데이트 되었습니다');
 });
 

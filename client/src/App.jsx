@@ -30,7 +30,6 @@ function App() {
   };
 
   const onEdit = async (id, newText) => {
-    console.log(id, newText);
     try {
       // 서버에 수정 요청 보내기
       await axios.put(`http://localhost:3000/todos/${id}`, { text: newText });

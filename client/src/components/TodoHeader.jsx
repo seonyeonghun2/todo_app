@@ -8,7 +8,6 @@ const TodoHeader = () => {
   const fetchToday = async () => {
     try {
       const today = await new Date().getDay();
-      console.log(today);
       switch (today) {
         case 0:
           setNowDay("Sunday");
@@ -39,9 +38,9 @@ const TodoHeader = () => {
     }
   };
   return (
-    <div className='header text-white'>
-      <h1 className='text-3xl text-center py-2'>{nowDay}</h1>
-      <p className='text-center my-2 text-blue-950'>할일을 입력해보세요!</p>
+    <div className='text-white header'>
+      <h1 className='py-2 text-3xl text-center'>{nowDay}</h1>
+      <p className='my-2 text-center text-blue-950'>할일을 입력해보세요!</p>
     </div>
   );
 };

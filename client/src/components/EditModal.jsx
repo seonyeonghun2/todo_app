@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
-function EditModal({ onSave, isOpen, onClose, initText, editId }) {
+function EditModal({ handleEditSave, isOpen, onClose, initText, editId }) {
   const [newText, setNewText] = useState("");
-
+  const newTextRef = useRef();
   const handleEditInputChange = (e) => {
     setNewText(e.target.value);
   };
-
+  
   const handleSave = () => {
-    onSave(editId, newText);
+    handleEditSave(editId, newText);
     onClose();
   };
 
@@ -16,7 +16,7 @@ function EditModal({ onSave, isOpen, onClose, initText, editId }) {
     <>
       {isOpen && (
         <div className='fixed inset-0 z-10 overflow-y-auto'>
-          <div className='flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0'>
+          <div className='flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0'>
             <div
               className='fixed inset-0 transition-opacity'
               aria-hidden='true'
@@ -41,7 +41,8 @@ function EditModal({ onSave, isOpen, onClose, initText, editId }) {
                     <h2>선택한 할일 : {initText}</h2>
                     <div className='mt-2'>
                       <input
-                        className='block w-full border-gray-300 rounded-md shadow-sm outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                        ref={newTextRef}
+                        className='block w-full text-center border-gray-300 rounded-md shadow-sm outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
                         value={newText}
                         onChange={handleEditInputChange}
                       />
