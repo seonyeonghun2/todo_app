@@ -42,12 +42,14 @@ function EditModal({ handleEditSave, isOpen, onClose, initText, editId }) {
                     <h3 className='text-lg font-medium leading-6 text-gray-900'>
                       할일 수정하기
                     </h3>
-                    <h2>선택한 할일 : {initText}</h2>
-                    <div className='mt-2'>
+                    <h2 className='mt-2'>선택한 할일 : {initText}</h2>
+                    <div className='flex mt-2'>
+                      <label htmlFor='newText'>변경할 할일 : </label>
                       <input
                         ref={newTextRef}
-                        className='block w-full text-center border-gray-300 rounded-md shadow-sm outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                        className='flex-1 shadow-sm outline-none pl-1rounded-md border-black-500 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
                         value={newText}
+                        id='newText'
                         onChange={handleEditInputChange}
                       />
                     </div>
