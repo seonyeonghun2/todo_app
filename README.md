@@ -9,6 +9,10 @@
 - Cloud DB 활용하기(MongoDB vs SupaBase)
 - 회원가입 및 인증 적용해보기(JWT)
 
+## 개발환경
+- API : Node.js(v20.12.0 LTS) + Express.js
+- Client : vite React
+
 ## 진행상황
 - 인-메모리 형태로 Todo App 구현 완료
 - Cloud DB 적용해보기
