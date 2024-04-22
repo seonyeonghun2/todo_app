@@ -40,7 +40,7 @@ const TodoHeader = () => {
   return (
     <div className='text-white header'>
       <h1 className='py-2 text-3xl text-center'>{nowDay}</h1>
-      <p className='my-2 text-center text-blue-950'>할일을 입력해보세요!</p>
+      <p className='my-2 text-center text-blue-150'>할일을 입력해보세요!</p>
     </div>
   );
 };

@@ -5,9 +5,14 @@ import TodoListItem from "./TodoListItem";
 const TodoList = ({ todos, onEdit, onDelete }) => {
   return (
     <>
-      <ul className='list-decimal'>
+      <ul className='flex flex-col w-full list-none'>
         {todos.map((todo) => (
-          <TodoListItem key={todo.id} todo={todo} onEdit={onEdit} onDelete={onDelete} />
+          <TodoListItem
+            key={todo.id}
+            todo={todo}
+            onEdit={onEdit}
+            onDelete={onDelete}
+          />
         ))}
       </ul>
     </>

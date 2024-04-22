@@ -16,8 +16,8 @@ const TodoListItem = ({ todo, onEdit, onDelete }) => {
   };
   return (
     <>
-      <li className='my-5' key={todo.id}>
-        {todo.text}{" "}
+      <li className='flex my-2' key={todo.id}>
+        <span className='flex-1 mr-1'>{todo.text}</span>
         <button
           onClick={handleEditClick}
           className='px-1 mx-1 text-white bg-indigo-600 rounded hover:bg-indigo-700'
@@ -26,7 +26,7 @@ const TodoListItem = ({ todo, onEdit, onDelete }) => {
         </button>
         <button
           onClick={handleDelete}
-          className='px-1 text-white bg-red-600 rounded hover:bg-red-700'
+          className='px-1 mr-1 text-white bg-red-600 rounded hover:bg-red-700'
         >
           삭제
         </button>

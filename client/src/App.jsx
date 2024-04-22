@@ -4,6 +4,7 @@ import "./App.css";
 import TodoHeader from "./components/TodoHeader";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
+import TodoFooter from "./components/TodoFooter";
 function App() {
   const [todos, setTodos] = useState([]);
 
@@ -59,6 +60,7 @@ function App() {
       <TodoHeader />
       <TodoInput onCreate={onCreate} />
       <TodoList todos={todos} onEdit={onEdit} onDelete={onDelete} />
+      <TodoFooter count={todos.length} />
     </div>
   );
 }
