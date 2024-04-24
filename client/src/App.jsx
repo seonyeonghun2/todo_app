@@ -15,43 +15,46 @@ function App() {
 
   useEffect(() => {
     fetchTodos();
-  }, [todos]);
+  }, [todos]); // 의존성 추가
 
   const fetchTodos = async () => {
     try {
       let { data: todoList, error } = await supabase.from("todos").select("*");
       if (todoList) {
         setTodos(todoList);
-        console.log(todoList);
       }
     } catch (error) {
-      console.log("데이터 패칭 에러 : ", error);
+      console.log("투두 목록 동기화 에러 : ", error);
     }
   };
 
   const onCreate = async (newTodo) => {
     try {
-      await axios.post("http://localhost:3000/todos", { text: newTodo });
-      fetchTodos();
+      const { data, error } = await supabase
+        .from("todos")
+        .insert([{ todo_text: newTodo }])
+        .select();
+      // fetchTodos();
     } catch (error) {
-      console.error("등록 에러 :", error);
+      console.error("투두 등록 에러 :", error);
     }
   };
 
   const onEdit = async (id, newText) => {
     try {
-      // 서버에 수정 요청 보내기
-      await axios.put(`http://localhost:3000/todos/${id}`, { text: newText });
-
-      // 수정이 성공하면 할일 목록 다시 불러오기
-      fetchTodos();
+      const { data, error } = await supabase
+        .from("todos")
+        .upsert({ id: id, todo_text: newText })
+        .select();
+      // fetchTodos();
     } catch (error) {
-      console.error("업데이트 에러:", error);
+      console.error("투두 업데이트 에러:", error);
       // 에러 처리
     }
   };
   const onDelete = async (id) => {
     const { error } = await supabase.from("todos").delete().eq("id", id);
+    // fetchTodos();
   };
 
   return (
