@@ -1,19 +1,27 @@
 import React, { useState } from "react";
 import EditModal from "./EditModal";
+import DeleteModal from "./DeleteModal";
 const TodoListItem = ({ todo, onEdit, onDelete }) => {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const handleEditClick = () => {
     setIsEditModalOpen(true);
   };
+  const handleDeleteClick = () => {
+    setIsDeleteModalOpen(true);
+  };
   const handleCloseModal = () => {
+    setIsEditModalOpen(false);
+  };
+  const handleCloseDeleteModal = () => {
     setIsEditModalOpen(false);
   };
   const handleEditSave = (id, newText) => {
     onEdit(todo.id, newText);
   };
-  const handleDelete = () => {
-    confirm("정말로, 삭제하시겠습니까?") && onDelete(todo.id);
-  };
+  const handleDeleteSave = (id) => {
+    onDelete(todo.id);
+  }
   return (
     <>
       <li className='m-5' key={todo.id}>
@@ -26,19 +34,29 @@ const TodoListItem = ({ todo, onEdit, onDelete }) => {
             수정
           </button>
           <button
-            onClick={handleDelete}
+            onClick={handleDeleteClick}
             className='px-1 mr-1 text-white bg-red-600 rounded hover:bg-red-700'
           >
             삭제
           </button>
         </div>
-        <EditModal
-          isOpen={isEditModalOpen}
-          onClose={handleCloseModal}
-          handleEditSave={handleEditSave}
-          initText={todo.text}
-          editId={todo.id}
-        />
+        {isEditModalOpen && (
+          <EditModal
+            isOpen={isEditModalOpen}
+            onClose={handleCloseModal}
+            handleEditSave={handleEditSave}
+            initText={todo.text}
+            editId={todo.id}
+          />
+        )}
+        {isDeleteModalOpen && (
+          <DeleteModal
+            isOpen={isDeleteModalOpen}
+            onClose={handleCloseDeleteModal}
+            onDelete={onDelete}
+            editId={todo.id}
+          />
+        )}
       </li>
     </>
   );
