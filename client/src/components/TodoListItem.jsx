@@ -12,7 +12,7 @@ const TodoListItem = ({ todo, onEdit, onDelete }) => {
     onEdit(todo.id, newText);
   };
   const handleDelete = () => {
-    onDelete(todo.id);
+    confirm("정말로, 삭제하시겠습니까?") && onDelete(todo.id);
   };
   return (
     <>
