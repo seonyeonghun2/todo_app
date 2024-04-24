@@ -3,10 +3,10 @@ import React, { useState, useRef, useEffect } from "react";
 function EditModal({ handleEditSave, isOpen, onClose, initText, editId }) {
   const [newText, setNewText] = useState("");
   const newTextRef = useRef();
-  const handleEditInputEnter = (e) => {
+  const handleEditInputEnter = () => {
     setNewText(e.target.value);
   };
-  const handleEditInputChange = () => {
+  const handleEditInputChange = (e) => {
     setNewText(e.target.value);
   };
   useEffect(() => {
