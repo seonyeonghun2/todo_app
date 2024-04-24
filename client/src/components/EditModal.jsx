@@ -3,6 +3,9 @@ import React, { useState, useRef, useEffect } from "react";
 function EditModal({ handleEditSave, isOpen, onClose, initText, editId }) {
   const [newText, setNewText] = useState("");
   const newTextRef = useRef();
+  const handleEditInputEnter = () => {
+    setNewText(e.target.value);
+  };
   const handleEditInputChange = (e) => {
     setNewText(e.target.value);
   };
@@ -51,6 +54,7 @@ function EditModal({ handleEditSave, isOpen, onClose, initText, editId }) {
                         value={newText}
                         id='newText'
                         onChange={handleEditInputChange}
+                        onKeyDown={handleEditInputEnter}
                       />
                     </div>
                   </div>
