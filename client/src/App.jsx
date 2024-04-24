@@ -5,19 +5,27 @@ import TodoHeader from "./components/TodoHeader";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import TodoFooter from "./components/TodoFooter";
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     fetchTodos();
-  }, []);
+  }, [todos]);
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/todos");
-      setTodos(response.data);
+      let { data: todoList, error } = await supabase.from("todos").select("*");
+      if (todoList) {
+        setTodos(todoList);
+        console.log(todoList);
+      }
     } catch (error) {
-      console.error("에러:", error);
+      console.log("데이터 패칭 에러 : ", error);
     }
   };
 
@@ -43,16 +51,7 @@ function App() {
     }
   };
   const onDelete = async (id) => {
-    try {
-      // 서버에 수정 요청 보내기
-      await axios.delete(`http://localhost:3000/todos/${id}`);
-
-      // 수정이 성공하면 할일 목록 다시 불러오기
-      fetchTodos();
-    } catch (error) {
-      console.error("삭제 에러:", error);
-      // 에러 처리
-    }
+    const { error } = await supabase.from("todos").delete().eq("id", id);
   };
 
   return (
