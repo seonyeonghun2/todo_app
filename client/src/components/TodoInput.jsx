@@ -28,7 +28,7 @@ const TodoInput = ({ onCreate }) => {
         />
         <button
           type='submit'
-          className='p-1 ml-1 text-white rounded bg-slate-400 hover:bg-yellow-600'
+          className='p-1 ml-1 text-white rounded bg-sky-600 hover:bg-sky-400'
         >
           등록
         </button>
