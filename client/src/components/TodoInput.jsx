@@ -24,7 +24,7 @@ const TodoInput = ({ onCreate }) => {
           type='text'
           value={newTodo}
           onChange={handleInputChange}
-          className='flex-1 border-b-2 todo_input'
+          className='flex-1 border-b-2 todo_input indent-1'
         />
         <button
           type='submit'
