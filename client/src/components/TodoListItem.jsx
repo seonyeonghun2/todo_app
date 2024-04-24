@@ -13,29 +13,38 @@ const TodoListItem = ({ todo, onEdit, onDelete }) => {
   const handleCloseModal = () => {
     setIsEditModalOpen(false);
   };
-  const handleCloseDeleteModal = () => {
-    setIsEditModalOpen(false);
+  const handleDeleteModal = () => {
+    setIsDeleteModalOpen(false);
   };
   const handleEditSave = (id, newText) => {
     onEdit(todo.id, newText);
   };
   const handleDeleteSave = (id) => {
     onDelete(todo.id);
-  }
+  };
+  const stringToDate = (stringDate) => {
+    const targetDate = new Date(stringDate);
+    const month = String(targetDate.getMonth() + 1);
+    const date = String(targetDate.getDate());
+    return `${month} / ${date}`;
+  };
   return (
     <>
       <li className='m-5' key={todo.id}>
         <div className='flex'>
-          <span>{todo.text}</span>
+          <span>{todo.todo_text}</span>
+          <span className='inline-flex items-center px-1 ml-auto text-xs text-white bg-gray-600 rounded item'>
+            {stringToDate(todo.created_at)}
+          </span>
           <button
             onClick={handleEditClick}
-            className='px-1 mx-1 ml-auto text-white bg-indigo-600 rounded hover:bg-indigo-700'
+            className='px-1 mx-1 text-xs text-white bg-indigo-600 rounded hover:bg-indigo-700'
           >
             수정
           </button>
           <button
             onClick={handleDeleteClick}
-            className='px-1 mr-1 text-white bg-red-600 rounded hover:bg-red-700'
+            className='px-1 text-xs text-white bg-red-600 rounded hover:bg-red-700'
           >
             삭제
           </button>
@@ -45,14 +54,14 @@ const TodoListItem = ({ todo, onEdit, onDelete }) => {
             isOpen={isEditModalOpen}
             onClose={handleCloseModal}
             handleEditSave={handleEditSave}
-            initText={todo.text}
+            initText={todo.todo_text}
             editId={todo.id}
           />
         )}
         {isDeleteModalOpen && (
           <DeleteModal
             isOpen={isDeleteModalOpen}
-            onClose={handleCloseDeleteModal}
+            onClose={handleDeleteModal}
             onDelete={onDelete}
             editId={todo.id}
           />
