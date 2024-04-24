@@ -7,6 +7,7 @@ router.post('/', (req, res) => {
   const newTodo = {
     id: i++,
     text: req.body.text,
+    isDone: false
   };
   todos.push(newTodo);
   res.status(201).send('할일이 추가되었습니다.');
