@@ -13,8 +13,8 @@ const TodoListItem = ({ todo, onEdit, onDelete }) => {
   const handleCloseModal = () => {
     setIsEditModalOpen(false);
   };
-  const handleCloseDeleteModal = () => {
-    setIsEditModalOpen(false);
+  const handleDeleteModal = () => {
+    setIsDeleteModalOpen(false);
   };
   const handleEditSave = (id, newText) => {
     onEdit(todo.id, newText);
@@ -54,14 +54,14 @@ const TodoListItem = ({ todo, onEdit, onDelete }) => {
             isOpen={isEditModalOpen}
             onClose={handleCloseModal}
             handleEditSave={handleEditSave}
-            initText={todo.text}
+            initText={todo.todo_text}
             editId={todo.id}
           />
         )}
         {isDeleteModalOpen && (
           <DeleteModal
             isOpen={isDeleteModalOpen}
-            onClose={handleCloseDeleteModal}
+            onClose={handleDeleteModal}
             onDelete={onDelete}
             editId={todo.id}
           />

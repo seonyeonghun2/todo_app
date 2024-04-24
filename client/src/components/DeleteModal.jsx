@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 
 function DeleteModal({ isOpen, onClose, onDelete, editId }) {
-  const handleRemoteItem = () => {
+  const handleRemoveItem = () => {
     onDelete(editId);
+    onClose();
+  };
+  const handleCancel = () => {
     onClose();
   };
 
@@ -39,7 +42,7 @@ function DeleteModal({ isOpen, onClose, onDelete, editId }) {
                 <button
                   type='button'
                   className='inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm'
-                  onClick={handleRemoteItem}
+                  onClick={handleRemoveItem}
                 >
                   삭제
                 </button>
