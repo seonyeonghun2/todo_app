@@ -16,11 +16,6 @@
 ## 진행상황
 - 인-메모리 형태로 Todo App 구현 완료
 - Cloud DB 적용해보기
+- 일부 스타일 수정 및 모달형태 삭제구현 완료
 
-<<<<<<< HEAD
 > Cloud DB를 이용하기 위해서는 로컬 API를 SupaBase나 MongoDB Atlas에서 제공하는 API를 사용해야하므로, 로컬에서 개발한 API는 더이상 필요하지 않게 됨
-=======
-## 브랜치
-- main : 최종 outout
-- feature : 로컬 API를 Cloud DB API로 변경하는 진행중인 output | 최종적으로 main에 병합예정
->>>>>>> e6f0a882e439f566ff8c7dd025106704b44846be
