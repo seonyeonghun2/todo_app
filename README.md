@@ -26,3 +26,4 @@
 
 > Cloud DB를 이용하기 위해서는 로컬 API를 SupaBase나 MongoDB Atlas에서 제공하는 API를 사용해야하므로, 로컬에서 개발한 API는 더이상 필요하지 않게 됨
 > supabse를 적용하여 cloud DB로 할일을 기록할수 있게 함
+> 페이지별 라우팅 처리(react-router-dom)
