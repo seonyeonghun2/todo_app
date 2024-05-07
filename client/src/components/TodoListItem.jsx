@@ -24,9 +24,10 @@ const TodoListItem = ({ todo, onEdit, onDelete }) => {
   };
   const stringToDate = (stringDate) => {
     const targetDate = new Date(stringDate);
+    const year = String(targetDate.getFullYear());
     const month = String(targetDate.getMonth() + 1);
     const date = String(targetDate.getDate());
-    return `${month} / ${date}`;
+    return `${year}/${month}/${date}`;
   };
   return (
     <>
