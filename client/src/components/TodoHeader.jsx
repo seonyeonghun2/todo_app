@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 const TodoHeader = () => {
   const [nowDay, setNowDay] = useState("Unknown day");
   useEffect(() => {
@@ -38,10 +38,14 @@ const TodoHeader = () => {
     }
   };
   return (
-    <div className='text-white header'>
-      <h1 className='py-2 text-3xl text-center'>{nowDay}</h1>
-      <p className='my-2 text-center text-blue-150'>할일을 입력해보세요!</p>
-    </div>
+    <>      
+      <div className='py-5 text-white header'>
+        <h1 className='text-3xl text-center'>{nowDay}</h1>
+        <p className='my-2 text-xs text-center text-blue-150'>
+          오늘의 중요한 일정을 기록해보세요!
+        </p>        
+      </div>
+    </>
   );
 };
 
