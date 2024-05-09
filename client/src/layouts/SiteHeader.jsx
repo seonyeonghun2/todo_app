@@ -1,12 +1,12 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-const Cover = () => {
-  return (
-    <>
-      <img src='https://picsum.photos/1000/300' alt='picsum' />
-    </>
-  );
-};
+// background: rgb(36, 123, 193);
+//   background: linear-gradient(
+//     90deg,
+//     rgba(36, 123, 193, 1) 0%,
+//     rgba(0, 212, 255, 1) 100%
+//   );
+
 const SiteHeader = () => {
   const location = useLocation();
   return (
@@ -33,5 +33,20 @@ const SiteHeader = () => {
     </>
   );
 };
-
+const Cover = () => {
+  const location = useLocation();
+  return (
+    <>
+      {location.pathname == "/login" ? (
+        <div className='flex items-center justify-center text-3xl text-white h-28 bg-gradient-to-r from-violet-500 to-fuchsia-500'>
+          로그인
+        </div>
+      ) : (
+        <div className='flex items-center justify-center text-3xl text-white bg-gradient-to-r from-sky-500 to-indigo-500 h-28'>
+          회원가입
+        </div>
+      )}
+    </>
+  );
+};
 export default SiteHeader;
